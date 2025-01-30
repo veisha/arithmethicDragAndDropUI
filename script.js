@@ -10,9 +10,50 @@ document.addEventListener('DOMContentLoaded', () => {
         return Math.floor(Math.random() * 101);
     };
 
-    // Initialize the random number
-    let randomNumber = generateRandomNumber();
-    randomNumberBox.textContent = randomNumber;
+    // Function to generate a valid equation with one blank
+    const generateEquation = () => {
+        const num1 = generateRandomNumber();
+        const num2 = generateRandomNumber();
+        const operator = Math.random() < 0.5 ? '+' : '-';
+        let result;
+
+        if (operator === '+') {
+            result = num1 + num2;
+        } else {
+            result = num1 - num2;
+        }
+
+        // Randomly decide which part of the equation will be blank
+        const blankPosition = Math.floor(Math.random() * 3); // 0: num1, 1: operator, 2: num2
+
+        return { num1, num2, operator, result, blankPosition };
+    };
+
+    // Initialize the equation and random number
+    let equation = generateEquation();
+    randomNumberBox.textContent = equation.result;
+
+    // Function to display the equation with a blank
+    const displayEquation = () => {
+        dropZones.forEach((zone, index) => {
+            // Clear the drop zone
+            while (zone.firstChild) {
+                zone.removeChild(zone.firstChild);
+            }
+
+            // Display the fixed parts of the equation
+            if (index !== equation.blankPosition) {
+                const fixedValue = index === 0 ? equation.num1 : index === 1 ? equation.operator : equation.num2;
+                const fixedElement = document.createElement('div');
+                fixedElement.textContent = fixedValue;
+                fixedElement.classList.add('fixed');
+                zone.appendChild(fixedElement);
+            }
+        });
+    };
+
+    // Display the initial equation
+    displayEquation();
 
     // Function to handle drag start
     const handleDragStart = (e) => {
@@ -48,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             zone.classList.remove('hovered');
             const clone = document.querySelector('.dragging');
 
-            if (clone) {
+            if (clone && !zone.querySelector('.fixed')) { // Only allow dropping in blank zones
                 // Middle box validation (only accepts + or -)
                 if (index === 1 && !['+', '-'].includes(clone.textContent)) {
                     clone.remove(); // Remove the clone if it's not + or -
@@ -59,11 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ((index === 0 || index === 2) && ['+', '-'].includes(clone.textContent)) {
                     clone.remove(); // Remove the clone if it's an operator
                     return;
-                }
-
-                // Ensure the middle box only has one operator
-                if (index === 1 && zone.firstChild) {
-                    zone.removeChild(zone.firstChild); // Remove existing operator
                 }
 
                 // Append the clone to the drop zone
@@ -89,58 +125,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Function to get the concatenated value of all draggable items in a drop zone
+    const getConcatenatedValue = (zone) => {
+        const draggableItems = zone.querySelectorAll('.draggable');
+        let value = '';
+        draggableItems.forEach(item => {
+            value += item.textContent;
+        });
+        return value;
+    };
+
     // Function to check the equation
     const checkEquation = () => {
-        const number1 = dropZones[0].textContent.trim();
-        const operator = dropZones[1].textContent.trim();
-        const number2 = dropZones[2].textContent.trim();
+        // Retrieve values from the drop zones
+        const number1 = getConcatenatedValue(dropZones[0]) || equation.num1;
+        const operator = dropZones[1].querySelector('.draggable')?.textContent || equation.operator;
+        const number2 = getConcatenatedValue(dropZones[2]) || equation.num2;
 
-        if (number1 && operator && number2) {
-            const num1 = parseInt(number1, 10);
-            const num2 = parseInt(number2, 10);
-            let result;
+        // Convert values to numbers
+        const num1 = parseInt(number1, 10);
+        const num2 = parseInt(number2, 10);
+        let result;
+        
+        // Calculate the result based on the operator
+        if (operator === '+') {
+            result = num1 + num2;
+            console.log(num1, operator, num2, "=" ,result );
+        } else if (operator === '-') {
+            result = num1 - num2;
+            console.log(num1, operator, num2, "=" ,result );
+        }
 
-            if (operator === '+') {
-                result = num1 + num2;
-            } else if (operator === '-') {
-                result = num1 - num2;
-            }
+        // Compare the result to the random number
+        if (result === equation.result) {
+            feedbackMessage.textContent = 'Correct! 🎉';
+            feedbackMessage.style.color = 'green';
 
-            if (result === randomNumber) {
-                feedbackMessage.textContent = 'Correct! 🎉';
-                feedbackMessage.style.color = 'green';
-
-                // Generate a new random number after 1.5 seconds
-                setTimeout(() => {
-                    randomNumber = generateRandomNumber();
-                    randomNumberBox.textContent = randomNumber;
-
-                    // Clear the drop zones
-                    dropZones.forEach(zone => {
-                        while (zone.firstChild) {
-                            zone.removeChild(zone.firstChild);
-                        }
-                    });
-
-                    // Clear the feedback message
-                    feedbackMessage.textContent = '';
-                }, 1500); // 1.5 seconds delay
-            } else {
-                feedbackMessage.textContent = 'Incorrect. Try again! ❌';
-                feedbackMessage.style.color = 'red';
-            }
+            // Generate a new equation after 1.5 seconds
+            setTimeout(() => {
+                equation = generateEquation();
+                randomNumberBox.textContent = equation.result;
+                displayEquation();
+                feedbackMessage.textContent = '';
+            }, 1500); // 1.5 seconds delay
         } else {
-            feedbackMessage.textContent = '';
+            feedbackMessage.textContent = 'Incorrect. Try again! ❌';
+            feedbackMessage.style.color = 'red';
         }
     };
 
     // Reset button functionality
     resetButton.addEventListener('click', () => {
-        dropZones.forEach(zone => {
-            while (zone.firstChild) {
-                zone.removeChild(zone.firstChild); // Delete the dragged elements instead of moving them back
-            }
-        });
+        equation = generateEquation();
+        randomNumberBox.textContent = equation.result;
+        displayEquation();
         feedbackMessage.textContent = ''; // Clear feedback message
     });
 });
