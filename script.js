@@ -182,3 +182,29 @@ document.addEventListener('DOMContentLoaded', () => {
         feedbackMessage.textContent = ''; // Clear feedback message
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup');
+    const infoButton = document.getElementById('info-button');
+    const closePopup = document.getElementById('close-popup');
+
+    // Show the popup on first run
+    popup.style.display = 'flex';
+
+    // Toggle popup when the info button is clicked
+    infoButton.addEventListener('click', () => {
+        popup.style.display = 'flex';
+    });
+
+    // Close the popup when the close button is clicked
+    closePopup.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Close the popup when clicking outside the content
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});

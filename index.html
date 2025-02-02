@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Button to toggle the popup -->
+    <button id="info-button">!</button>
+
+    <!-- Popup for game mechanics -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup">&times;</span>
+            <h2>Game Mechanics</h2>
+            <p>
+                Welcome to the Drag and Drop Math Game! Here's how to play:
+            </p>
+            <ul>
+                <li>
+                    Drag numbers and operators (+, -) into the blank drop zones to form a valid equation. 
+                    <br>
+                    <img src="0202.gif" alt="Drag and Drop Demo" style="width: 100%; max-width: 300px; margin-top: 10px; border-radius: 10px;">
+                    
+                </li>
+                <li>The equation must equal the number displayed in the random number box.</li>
+                <li>If the equation is correct, you'll get a "Correct!" message, and a new equation will be generated.</li>
+                <li>If the equation is incorrect, you'll see "Incorrect. Try again!"</li>
+                <li>Use the Reset button to start over.</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
         <div class="drop-zone" id="drop-zone-1"></div>
         <div class="drop-zone" id="drop-zone-2"></div>
