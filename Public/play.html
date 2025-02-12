@@ -1,0 +1,95 @@
+<!-- play.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Game</title>
+    <link rel="stylesheet" href="../Styles/play.css">
+</head>
+<body>
+    <div class="gameplay-container">
+        <div class="dropdowns-and-button-container">
+            <div class="dropdowns-container">
+                <div class="dropdown-group">
+                    <h1>Select Difficulty</h1>
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Select Difficulty</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="dropdown-options">
+                            <div class="option" data-value="easy">Easy</div>
+                            <div class="option" data-value="medium">Medium</div>
+                            <div class="option" data-value="hard">Hard</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-group">
+                    <h1>Select Operation</h1>
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header">
+                            <span>Select Operation</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="dropdown-options">
+                            <div class="option" data-value="addition">Addition</div>
+                            <div class="option" data-value="subtraction">Subtraction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Align the button with the dropdowns -->
+            <div class="start-button-container">
+                <button onclick="startGame()">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for custom dropdown functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownHeaders = document.querySelectorAll('.dropdown-header');
+            dropdownHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const options = this.nextElementSibling;
+                    options.style.display = options.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function () {
+                    const dropdownHeader = this.closest('.custom-dropdown').querySelector('.dropdown-header span');
+                    dropdownHeader.textContent = this.textContent;
+                    dropdownHeader.parentElement.setAttribute('data-selected', 'true'); // Mark as selected
+                    this.closest('.dropdown-options').style.display = 'none';
+                });
+            });
+        });
+
+        // Start game function with validation
+        function startGame() {
+            const difficulty = document.querySelector('.dropdown-group:first-child .dropdown-header span').textContent.toLowerCase();
+            const operation = document.querySelector('.dropdown-group:last-child .dropdown-header span').textContent.toLowerCase();
+
+            // Check if difficulty is selected
+            if (difficulty === "select difficulty") {
+                alert("Please select a difficulty before starting the game.");
+                return; // Stop the function if no difficulty is selected
+            }
+
+            // Check if operation is selected
+            if (operation === "select operation") {
+                alert("Please select an operation before starting the game.");
+                return; // Stop the function if no operation is selected
+            }
+
+            // Redirect to index.html with difficulty and operation as URL parameters
+            window.location.href = `index.html?difficulty=${difficulty}&operation=${operation}`;
+        }
+    </script>
+</body>
+</html>

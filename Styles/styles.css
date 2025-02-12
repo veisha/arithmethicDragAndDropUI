@@ -106,7 +106,13 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #63B4D1; /* Light blue background */
+    /* From https://css.glass */
+background: rgba(99, 180, 209, 0.76);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15.9px);
+-webkit-backdrop-filter: blur(15.9px);
+border: 1px solid rgba(99, 180, 209, 0.62);
     color: #fff; /* White text */
     border: none;
     border-radius: 5px;
@@ -134,9 +140,67 @@ body {
 }
 
 
+/* Container for the reset and skip buttons */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Adds space above the container */
+}
 
+/* Styling for the skip button */
+#skip-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+/* From https://css.glass */
+background: rgba(99, 180, 209, 0.76);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15.9px);
+-webkit-backdrop-filter: blur(15.9px);
+border: 1px solid rgba(99, 180, 209, 0.62);
 
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
 
+}
+
+/* Hover effect for the skip button */
+#skip-button:hover {
+    background-color: #7699D4; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Styling for the submit button */
+#submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+/* From https://css.glass */
+background: rgba(99, 180, 209, 0.76);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15.9px);
+-webkit-backdrop-filter: blur(15.9px);
+border: 1px solid rgba(99, 180, 209, 0.62);
+
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the submit button */
+#submit-button:hover {
+    background-color: #7699D4; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
 
 /* Container for the start button */
 .start-container {
@@ -146,28 +210,7 @@ body {
     height: 100vh; /* Full viewport height to center vertically */
 }
 
-/* Styling for the start button */
-#start-button {
-    padding: 15px 30px;
-    font-size: 24px; /* Larger font for emphasis */
-    font-weight: bold;
-    cursor: pointer;
-    background-color: transparent; /* Transparent background */
-    color: #90FCF9; /* Light cyan text color */
-    border: 2px solid #90FCF9; /* Light cyan border */
-    border-radius: 10px; /* Rounded corners */
-    text-transform: uppercase; /* Uppercase text for arcade style */
-    letter-spacing: 2px; /* Spaced-out letters */
-    animation: blink 1.5s infinite; /* Blinking animation */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
 
-/* Hover effect for the start button */
-#start-button:hover {
-    color: #63B4D1; /* Change text color on hover */
-    border-color: #63B4D1; /* Change border color on hover */
-    animation: none; /* Stop blinking on hover */
-}
 
 /* Blinking animation */
 @keyframes blink {
@@ -192,9 +235,13 @@ body {
     height: 40px;
     font-size: 20px;
     font-weight: bold;
-    background-color: #63B4D1;
+    /* From https://css.glass */
+background: rgba(99, 180, 209, 0.75);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(15.9px);
+-webkit-backdrop-filter: blur(15.9px);
+border: 1px solid rgba(99, 180, 209, 0.62);
     color: #fff;
-    border: none;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000; /* Ensure it's above other elements */
@@ -272,6 +319,22 @@ body {
 }
 
 
+/* Styling for the back to main menu button */
+#back-to-menu {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #63B4D1; /* Light blue background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
 
-/*log in css*/
+/* Hover effect for the back to main menu button */
+#back-to-menu:hover {
+    background-color: #7699D4; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
 

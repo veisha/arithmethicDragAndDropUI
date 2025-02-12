@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 localStorage.setItem('token', data.token);
-                window.location.href = 'index.html'; // Redirect after login
+                window.location.href = 'menu.html'; // Redirect after login
             }
         });
     }

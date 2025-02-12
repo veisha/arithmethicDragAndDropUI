@@ -24,4 +24,4 @@ SELECT * FROM users;
 "@
 
 # Execute MySQL with the commands
-.\mysql -u root -p -e "$mysqlCommand"
+.\mysql -u root -e "$mysqlCommand"
