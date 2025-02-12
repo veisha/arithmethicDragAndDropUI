@@ -90,6 +90,45 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Leaderboard Endpoint
+app.get('/leaderboard', (req, res) => {
+    const { difficulty, type } = req.query; // Optional filtering parameters
+
+    let query = `
+        SELECT users.username, scores.difficulty, scores.type, scores.score, 
+               SEC_TO_TIME(scores.time_taken) AS formatted_time 
+        FROM scores 
+        JOIN users ON scores.user_id = users.id
+    `;
+
+    const params = [];
+    if (difficulty || type) {
+        query += " WHERE ";
+        if (difficulty) {
+            query += "scores.difficulty = ?";
+            params.push(difficulty);
+        }
+        if (difficulty && type) {
+            query += " AND ";
+        }
+        if (type) {
+            query += "scores.type = ?";
+            params.push(type);
+        }
+    }
+
+    query += " ORDER BY scores.score DESC, scores.time_taken ASC"; // Sort by best score
+
+    db.query(query, params, (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Failed to fetch leaderboard' });
+        }
+        res.json(results);
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
