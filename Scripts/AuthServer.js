@@ -28,6 +28,28 @@ db.connect(err => {
     console.log('Connected to MySQL database');
 });
 
+//save-score endpoint
+app.post('/save-score', (req, res) => {
+    const { userId, difficulty, type, score, timeTaken } = req.body;
+
+    if (!userId || !difficulty || !type || !score || !timeTaken) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    const query = `
+        INSERT INTO scores (user_id, difficulty, type, score, time_taken)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.query(query, [userId, difficulty, type, score, timeTaken], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Failed to save score' });
+        }
+        res.status(200).json({ message: 'Score saved successfully' });
+    });
+});
+
 // Register Endpoint
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
@@ -51,6 +73,7 @@ app.post('/login', (req, res) => {
     if (!username || !password) {
         return res.status(400).json({ message: 'Username and password are required' });
     }
+
     db.query('SELECT * FROM users WHERE username = ?', [username], async (err, results) => {
         if (err) return res.status(500).json({ message: 'Server error' });
         if (results.length === 0) return res.status(401).json({ message: 'Invalid credentials' });
@@ -60,7 +83,10 @@ app.post('/login', (req, res) => {
         if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
         const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-        res.json({ message: 'Login successful', token });
+
+        // Return both the token and the userId
+        console.log("USER ID SENT", user.id);
+        res.json({ message: 'Login successful', token, userId: user.id });
     });
 });
 
