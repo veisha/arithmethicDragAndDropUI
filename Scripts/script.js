@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerInterval); // Stop the timer
         const endTime = Date.now();
         const timeTaken = Math.floor((endTime - startTime) / 1000); // Calculate time taken in seconds
-    
+
         // Display the score, time taken, and a "Back to Main Menu" button
         feedbackMessage.innerHTML = `
             <h2>Game Over!</h2>
@@ -251,19 +251,24 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="back-to-menu">Back to Main Menu</button>
         `;
         feedbackMessage.style.color = '#90FCF9';
-    
+
         // Add event listener for the "Back to Main Menu" button
         const backToMenuButton = document.getElementById('back-to-menu');
         backToMenuButton.addEventListener('click', () => {
             window.location.href = 'menu.html'; // Redirect to the main menu
         });
-    
+
+        // Disable Reset, Skip, and Submit buttons
+        resetButton.disabled = true;
+        skipButton.disabled = true;
+        submitButton.disabled = true;
+
         // Save the score to the database
         const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
         const difficulty = urlParams.get('difficulty') || 'easy'; // Get difficulty from URL
         const type = urlParams.get('operation') || 'addition'; // Get operation type from URL
         const score = correctAnswers; // Use the number of correct answers as the score
-    
+
         fetch('http://localhost:3000/save-score', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
