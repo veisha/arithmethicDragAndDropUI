@@ -1,0 +1,173 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #480355, #9448BC, #7699D4);
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Search Bar */
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border-radius: 20px;
+    border: 1px solid #90FCF9;
+    background-color: rgba(144, 252, 249, 0.2);
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: #90FCF9;
+    opacity: 0.8;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #63B4D1;
+    background-color: rgba(144, 252, 249, 0.3);
+}
+
+/* Filter Groups */
+.filter-group {
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-group span {
+    font-weight: bold;
+    color: #90FCF9;
+}
+
+.filter-group label {
+    padding: 8px 15px;
+    border: 2px solid #63B4D1;
+    background: rgba(144, 252, 249, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.filter-group label:hover {
+    background-color: rgba(144, 252, 249, 0.3);
+}
+
+/* Table Styling */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid rgba(144, 252, 249, 0.4);
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+th {
+    background-color: rgba(99, 180, 209, 0.6);
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(144, 252, 249, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(99, 180, 209, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Pagination */
+#pagination {
+    margin-top: 20px;
+}
+
+#pagination button {
+    padding: 10px 15px;
+    border: 2px solid #90FCF9;
+    background: rgba(144, 252, 249, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#pagination button:hover {
+    background-color: rgba(144, 252, 249, 0.3);
+    transform: scale(1.05);
+}
+
+/* Glassmorphic Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(99, 180, 209, 0.76);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.9px);
+    -webkit-backdrop-filter: blur(15.9px);
+    border: 1px solid rgba(99, 180, 209, 0.62);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #7699D4;
+    transform: scale(1.05);
+}
+
+/* Centered Start Button */
+.start-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Top Controls: Button + Search Bar */
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+/* Toggle Button */
+#toggle-filters {
+    padding: 8px 15px;
+    border: 2px solid #63B4D1;
+    background: rgba(144, 252, 249, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#toggle-filters:hover {
+    background-color: rgba(99, 180, 209, 0.3);
+}
+
+/* Filter Container */
+#filter-container {
+    display: none; /* Initially hidden */
+    margin-bottom: 15px;
+}

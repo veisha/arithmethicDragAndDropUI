@@ -4,76 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-    <link rel="stylesheet" href="../Styles/menu.css">
+    <link rel="stylesheet" href="../Styles/leaderboard.css">
 </head>
 <body>
-    <div class="leaderboard-container">
-        <h1>Leaderboard</h1>
-        
-        <label for="difficulty">Difficulty:</label>
-        <select id="difficulty">
-            <option value="">All</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
 
-        <label for="type">Type:</label>
-        <select id="type">
-            <option value="">All</option>
-            <option value="addition">Addition</option>
-            <option value="subtraction">Subtraction</option>
-        </select>
+    <h1>Leaderboard</h1>
 
-        <button onclick="loadLeaderboard()">Filter</button>
+    <!-- Toggle Button and Search Bar Container -->
+<div class="top-controls">
+    <button id="toggle-filters" onclick="toggleFilters()">Filters</button>
+    <input type="text" id="username-search" placeholder="Search Username..." oninput="filterLeaderboard()">
+</div>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Difficulty</th>
-                    <th>Type</th>
-                    <th>Score</th>
-                    <th>Time Taken</th>
-                </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-                <!-- Data will be inserted here -->
-            </tbody>
-        </table>
-
-        <button onclick="location.href='menu.html'">Back to Menu</button>
+<!-- Filters Container -->
+<div id="filter-container">
+    <!-- Difficulty Filter -->
+    <div class="filter-group">
+        <span>Difficulty:</span>
+        <label><input type="radio" name="difficulty" value="" checked onclick="filterLeaderboard()"> All</label>
+        <label><input type="radio" name="difficulty" value="Easy" onclick="filterLeaderboard()"> Easy</label>
+        <label><input type="radio" name="difficulty" value="Medium" onclick="filterLeaderboard()"> Medium</label>
+        <label><input type="radio" name="difficulty" value="Hard" onclick="filterLeaderboard()"> Hard</label>
     </div>
 
-    <script>
-        async function loadLeaderboard() {
-            const difficulty = document.getElementById('difficulty').value;
-            const type = document.getElementById('type').value;
+    <!-- Game Type Filter -->
+    <div class="filter-group">
+        <span>Game Type:</span>
+        <label><input type="radio" name="type" value="" checked onclick="filterLeaderboard()"> All</label>
+        <label><input type="radio" name="type" value="Addition" onclick="filterLeaderboard()"> Addition</label>
+        <label><input type="radio" name="type" value="Subtraction" onclick="filterLeaderboard()"> Subtraction</label>
+    </div>
 
-            let url = 'http://localhost:3000/leaderboard';
-            if (difficulty || type) {
-                url += `?${difficulty ? `difficulty=${difficulty}` : ''}${difficulty && type ? '&' : ''}${type ? `type=${type}` : ''}`;
-            }
+    <!-- Sorting -->
+    <div class="filter-group">
+        <span>Sort by:</span>
+        <label><input type="radio" name="sort" value="score" onclick="filterLeaderboard()"> Score</label>
+        <label><input type="radio" name="sort" value="time" onclick="filterLeaderboard()"> Time Taken</label>
+    </div>
+</div>
 
-            const response = await fetch(url);
-            const data = await response.json();
-            const leaderboardBody = document.getElementById('leaderboard-body');
-            leaderboardBody.innerHTML = '';
 
-            data.forEach(entry => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${entry.username}</td>
-                    <td>${entry.difficulty}</td>
-                    <td>${entry.type}</td>
-                    <td>${entry.score}</td>
-                    <td>${entry.formatted_time}</td>
-                `;
-                leaderboardBody.appendChild(row);
-            });
-        }
 
-        document.addEventListener('DOMContentLoaded', loadLeaderboard);
-    </script>
+    <!-- Leaderboard Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Difficulty</th>
+                <th>Type</th>
+                <th>Score</th>
+                <th>Time Taken</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div id="pagination">
+        <button id="prevPage" onclick="changePage(-1)">Previous</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" onclick="changePage(1)">Next</button>
+    </div>
+
+    <script src="../Scripts/leaderboard.js"></script>
 </body>
 </html>
