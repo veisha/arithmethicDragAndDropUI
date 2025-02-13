@@ -89,5 +89,7 @@ button:hover {
 #loginMessage, #registerMessage {
     margin-top: 15px;
     font-size: 14px;
-    color: #ff6b6b; /* Red for error messages */
+    color: #FF5733; /* Bright red-orange for better contrast */
+    font-weight: bold; /* Makes the text stand out */
+    text-shadow: 1px 1px 5px rgba(204, 0, 0, 0.8); /* Red glow effect for error emphasis */
 }

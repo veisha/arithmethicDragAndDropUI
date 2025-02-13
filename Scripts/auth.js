@@ -39,6 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             document.getElementById('registerMessage').textContent = data.message;
+            if (response.ok) {
+                document.getElementById("registerMessage").textContent = "Registration successful!";
+                document.getElementById("registerMessage").style.color = "#4CAF50"; // Green for success message
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }
+            
+            
         });
     }
 });
