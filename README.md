@@ -31,4 +31,4 @@ CREATE TABLE users (
 DESCRIBE users; //for verification if the table is created properly
 
 
-NOTEEEEEEEEEEEEEEEEEEE: OR JUST open/double click the run_query.bat on the SQL things folder
+NOTEEEEEEEEEEEEEEEEEEE: OR JUST open/double click the run_query.bat on the SQL things folderadasda
