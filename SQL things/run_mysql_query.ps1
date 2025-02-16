@@ -16,12 +16,30 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255)
 );
 
+CREATE TABLE IF NOT EXISTS scores (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    user_id INT(11) NOT NULL,
+    difficulty VARCHAR(50) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    score INT(11) NOT NULL,
+    time_taken INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 -- Describe the users table
 DESCRIBE users;
 
 -- Select all data from the users table
 SELECT * FROM users;
+
+SHOW TABLES;
+
+DESCRIBE scores;
+
+SELECT * FROM scores;
 "@
+
 
 # Execute MySQL with the commands
 .\mysql -u root -e "$mysqlCommand"
