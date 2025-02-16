@@ -227,6 +227,7 @@ border: 1px solid rgba(99, 180, 209, 0.62);
 
 
 /* Button to toggle the popup */
+/* Info button styling */
 #info-button {
     position: fixed;
     top: 20px;
@@ -235,12 +236,11 @@ border: 1px solid rgba(99, 180, 209, 0.62);
     height: 40px;
     font-size: 20px;
     font-weight: bold;
-    /* From https://css.glass */
-background: rgba(99, 180, 209, 0.75);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(15.9px);
--webkit-backdrop-filter: blur(15.9px);
-border: 1px solid rgba(99, 180, 209, 0.62);
+    background: rgba(99, 180, 209, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.9px);
+    -webkit-backdrop-filter: blur(15.9px);
+    border: 1px solid rgba(99, 180, 209, 0.62);
     color: #fff;
     border-radius: 50%;
     cursor: pointer;
@@ -251,6 +251,33 @@ border: 1px solid rgba(99, 180, 209, 0.62);
 #info-button:hover {
     background-color: #7699D4;
 }
+
+/* Back button styling */
+#back-to-menu {
+    position: fixed;
+    margin-top: 0px;
+    top: 20px; /* Align with the info button */
+    left: 20px; /* Position on the left side */
+    width: 40px; /* Same size as the info button */
+    height: 40px; /* Same size as the info button */
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(99, 180, 209, 0.75); /* Same style as the info button */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.9px);
+    -webkit-backdrop-filter: blur(15.9px);
+    border: 1px solid rgba(99, 180, 209, 0.62);
+    color: #fff;
+    border-radius: 50%; /* Circular shape */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the back button */
+#back-to-menu:hover {
+    background-color: #7699D4; /* Darker blue on hover */
+} 
 
 /* Popup styling */
 .popup {
@@ -319,22 +346,4 @@ border: 1px solid rgba(99, 180, 209, 0.62);
 }
 
 
-/* Styling for the back to main menu button */
-#back-to-menu {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #63B4D1; /* Light blue background */
-    color: #fff; /* White text */
-    border: none;
-    border-radius: 5px;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
-
-/* Hover effect for the back to main menu button */
-#back-to-menu:hover {
-    background-color: #7699D4; /* Darker blue on hover */
-    transform: scale(1.05); /* Slight scale-up effect */
-}
 
