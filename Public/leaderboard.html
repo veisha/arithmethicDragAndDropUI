@@ -11,39 +11,38 @@
     <h1>Leaderboard</h1>
 
     <!-- Toggle Button and Search Bar Container -->
-<div class="top-controls">
-    <button id="toggle-filters" onclick="toggleFilters()">Filters</button>
-    <input type="text" id="username-search" placeholder="Search Username..." oninput="filterLeaderboard()">
-</div>
-
-<!-- Filters Container -->
-<div id="filter-container">
-    <!-- Difficulty Filter -->
-    <div class="filter-group">
-        <span>Difficulty:</span>
-        <label><input type="radio" name="difficulty" value="" checked onclick="filterLeaderboard()"> All</label>
-        <label><input type="radio" name="difficulty" value="Easy" onclick="filterLeaderboard()"> Easy</label>
-        <label><input type="radio" name="difficulty" value="Medium" onclick="filterLeaderboard()"> Medium</label>
-        <label><input type="radio" name="difficulty" value="Hard" onclick="filterLeaderboard()"> Hard</label>
+    <div class="top-controls">
+        <button id="back-button" onclick="window.location.href='menu.html'"><</button>
+        <button id="toggle-filters" onclick="toggleFilters()">Filters</button>
+        <input type="text" id="username-search" placeholder="Search Username..." oninput="filterLeaderboard()">
     </div>
 
-    <!-- Game Type Filter -->
-    <div class="filter-group">
-        <span>Game Type:</span>
-        <label><input type="radio" name="type" value="" checked onclick="filterLeaderboard()"> All</label>
-        <label><input type="radio" name="type" value="Addition" onclick="filterLeaderboard()"> Addition</label>
-        <label><input type="radio" name="type" value="Subtraction" onclick="filterLeaderboard()"> Subtraction</label>
+    <!-- Filters Container -->
+    <div id="filter-container">
+        <!-- Difficulty Filter -->
+        <div class="filter-group">
+            <span>Difficulty:</span>
+            <label><input type="radio" name="difficulty" value="" checked onclick="filterLeaderboard()"> All</label>
+            <label><input type="radio" name="difficulty" value="Easy" onclick="filterLeaderboard()"> Easy</label>
+            <label><input type="radio" name="difficulty" value="Medium" onclick="filterLeaderboard()"> Medium</label>
+            <label><input type="radio" name="difficulty" value="Hard" onclick="filterLeaderboard()"> Hard</label>
+        </div>
+
+        <!-- Game Type Filter -->
+        <div class="filter-group">
+            <span>Game Type:</span>
+            <label><input type="radio" name="type" value="" checked onclick="filterLeaderboard()"> All</label>
+            <label><input type="radio" name="type" value="Addition" onclick="filterLeaderboard()"> Addition</label>
+            <label><input type="radio" name="type" value="Subtraction" onclick="filterLeaderboard()"> Subtraction</label>
+        </div>
+
+        <!-- Sorting -->
+        <div class="filter-group">
+            <span>Sort by:</span>
+            <label><input type="radio" name="sort" value="score" onclick="filterLeaderboard()"> Score</label>
+            <label><input type="radio" name="sort" value="time" onclick="filterLeaderboard()"> Time Taken</label>
+        </div>
     </div>
-
-    <!-- Sorting -->
-    <div class="filter-group">
-        <span>Sort by:</span>
-        <label><input type="radio" name="sort" value="score" onclick="filterLeaderboard()"> Score</label>
-        <label><input type="radio" name="sort" value="time" onclick="filterLeaderboard()"> Time Taken</label>
-    </div>
-</div>
-
-
 
     <!-- Leaderboard Table -->
     <table>

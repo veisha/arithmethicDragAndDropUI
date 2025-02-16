@@ -166,6 +166,20 @@ button:hover {
     background-color: rgba(99, 180, 209, 0.3);
 }
 
+#back-button {
+    padding: 8px 15px;
+    border: 2px solid #63B4D1;
+    background: rgba(144, 252, 249, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#back-button:hover {
+    background-color: rgba(99, 180, 209, 0.3);
+}
+
 /* Filter Container */
 #filter-container {
     display: none; /* Initially hidden */
