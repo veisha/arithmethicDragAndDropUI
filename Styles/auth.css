@@ -3,9 +3,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #480355, #9448BC, #7699D4); /* Gradient using your palette */
-    background-attachment: fixed;
-    color: #fff; /* White text for contrast */
+    background-image: url('../images/mainbg.gif'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    color: #000000; /* White text for contrast */
     min-height: 100vh; /* Ensures the gradient covers the full viewport height */
     display: flex;
     justify-content: center;
@@ -25,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center children horizontally */
+    color: #000000;
 }
 
 /* Input field styling */
@@ -32,22 +36,36 @@ input {
     width: calc(100% - 24px); /* Adjust width to account for padding */
     padding: 12px;
     margin: 10px 0;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border: 1px solid rgb(0, 0, 0); /* Light border */
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    color: #fff; /* White text */
+    color: #000000; /* White text */
     font-size: 16px;
     outline: none;
     transition: all 0.3s ease;
 }
 
 input::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Light placeholder text */
+    color: rgba(0, 0, 0, 0.446); /* Light placeholder text */
 }
 
 input:focus {
     border-color: #90FCF9; /* Light cyan border on focus */
     background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque on focus */
+}
+
+.account-text {
+    color: black; /* Set "Don't have an account?" to black */
+}
+
+.register-link {
+    color: blue; /* Set the link color to blue (or any other color you prefer) */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.register-link:hover {
+    color: darkblue; /* Change link color on hover */
+    text-decoration: underline; /* Optional: Add underline on hover */
 }
 
 /* Button styling */

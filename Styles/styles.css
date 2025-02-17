@@ -3,8 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background: linear-gradient(135deg, #480355, #9448BC, #7699D4); /* Gradient using your palette */
-    background-attachment: fixed;
+    background-image: url('../images/gamebg.gif'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
     color: #fff; /* White text for contrast */
     min-height: 100vh; /* Ensures the gradient covers the full viewport height */
 }
@@ -47,8 +50,8 @@ body {
     margin: 10px;
     font-size: 24px;
     font-weight: bold;
-    color: #fff; /* White text for contrast */
-    background-color: rgba(144, 252, 249, 0.1); /* Semi-transparent light cyan */
+    color: #000000; /* White text for contrast */
+    background-color: rgba(144, 252, 248, 0.4); /* Semi-transparent light cyan */
     border-radius: 10px; /* Rounded corners */
 }
 
@@ -70,9 +73,9 @@ body {
     align-items: center;
     justify-content: center;
     cursor: grab;
-    background-color: rgba(144, 252, 249, 0.2); /* Semi-transparent light cyan */
+    background-color: rgba(144, 252, 249, 0.4); /* Semi-transparent light cyan */
     font-size: 18px;
-    color: #fff; /* White text for contrast */
+    color: #000000; /* White text for contrast */
     transition: all 0.3s ease; /* Smooth transition for hover and active states */
     border-radius: 8px; /* Rounded corners */
 }
@@ -87,7 +90,7 @@ body {
 .fixed {
     font-size: 18px;
     font-weight: bold;
-    color: #fff; /* White text for contrast */
+    color: #000000; /* White text for contrast */
     pointer-events: none;
 }
 

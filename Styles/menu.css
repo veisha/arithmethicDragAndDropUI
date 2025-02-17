@@ -1,9 +1,13 @@
 /* General body styling */
 body {
+    background-image: url('../images/mainbg.gif'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #480355, #9448BC, #7699D4); /* Gradient using your palette */
     background-attachment: fixed;
     color: #fff; /* White text for contrast */
     min-height: 100vh; /* Ensures the gradient covers the full viewport height */
